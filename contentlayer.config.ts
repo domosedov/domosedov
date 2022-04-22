@@ -1,9 +1,10 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import highlight from "rehype-highlight";
 
 const Post = defineDocumentType(() => ({
   name: "Post",
-  contentType: "markdown",
-  filePathPattern: `posts/**/*.md`,
+  contentType: "mdx",
+  filePathPattern: `posts/**/*.mdx`,
   fields: {
     title: {
       type: "string",
@@ -19,7 +20,7 @@ const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => doc._raw.flattenedPath,
+      resolve: (doc) => "/" + doc._raw.flattenedPath,
     },
     pathSegments: {
       type: "json",
@@ -31,4 +32,7 @@ const Post = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Post],
+  mdx: {
+    rehypePlugins: [highlight],
+  },
 });
