@@ -1,21 +1,21 @@
 /** @type {import('tailwindcss/tailwind-config').TailwindTheme} */
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 const config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./src/**/*.{js,ts,jsx,tsx}', './content/**/*.{md,mdx}'],
   theme: {
     container: {
       center: true,
-      padding: "1rem",
+      padding: '1rem',
     },
     extend: {
       fontFamily: {
-        serif: ["PT Sans", ...defaultTheme.fontFamily.serif],
+        serif: ['PT Sans', ...defaultTheme.fontFamily.serif],
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
-};
+  plugins: [require('@tailwindcss/typography')],
+}
 
-module.exports = config;
+module.exports = config
